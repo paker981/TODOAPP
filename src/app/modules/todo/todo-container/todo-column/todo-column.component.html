@@ -1,0 +1,24 @@
+<div class="column-header">
+    {{ data.name }}
+    <div>
+        <mat-icon [matMenuTriggerFor]="matMenu">more_horiz</mat-icon>
+        <mat-menu #matMenu="matMenu" class=>
+            <button mat-menu-item (click)="editColumn()">Edit<mat-icon class="icon">edit</mat-icon></button>
+            <button mat-menu-item (click)="deleteColumn()">Delete<mat-icon class="icon">delete</mat-icon></button>
+      </mat-menu>
+      <mat-icon (click)="addTaskToColumn(index)">add</mat-icon>
+    </div>
+</div>
+
+<div class="items-list" cdkDropList [cdkDropListData]="data" (cdkDropListDropped)="onItemDrop($event)">
+    <div *ngFor="let task of data.tasks; trackById let taskIndex = index" cdkDrag>
+        <app-todo-task
+            #ref 
+            [data]="task" 
+            [index]="taskIndex"
+            [columnId]="data.id">
+        </app-todo-task>
+    </div>
+</div>
+
+

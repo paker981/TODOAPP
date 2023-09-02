@@ -1,0 +1,8 @@
+    <div  class="item">
+    {{ data.title }}
+      <div class="item-container">
+        <mat-checkbox (click)="changeState()" [checked]="data.done"></mat-checkbox>
+        <mat-icon (click)="edit()" class="icon">edit</mat-icon>
+        <mat-icon (click)="delete()" class="icon">delete</mat-icon>
+      </div>
+    </div>  

@@ -1,0 +1,15 @@
+<div cdkDropListGroup>
+<div class="columns-container">
+    <div class="column" *ngFor="let column of columns$ | async; trackById let columnIndex = index">
+      <app-todo-column 
+          [data]="column" 
+          [index]="columnIndex"
+          (itemDropped)="onItemDrop($event)"
+          >
+      </app-todo-column>
+    </div>
+    <div class="column-add" (click)="addColumn()">
+      Add another column 
+      <mat-icon>add</mat-icon>
+  </div>
+</div>
