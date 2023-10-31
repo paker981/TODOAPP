@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Task, TaskDialogData } from 'src/app/types/task.types';
 import { TodoService } from '../../services/todo.service';
 import { ItemDialogComponent } from '../../dialogs/item-dialog/item-dialog.component';
@@ -15,7 +15,7 @@ import { LoggerService } from 'src/app/services/logger.service';
   styleUrls: ['./todo-task.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TodoTaskComponent {
+export class TodoTaskComponent implements OnInit {
 
   @Input({required: true}) data!: Task;
   @Input({required: true}) index!: number;
@@ -25,6 +25,9 @@ export class TodoTaskComponent {
               private dialog: MatDialog,
               private taskService: TaskService
               ){}
+  ngOnInit(): void {
+    console.log(this.data)
+  }
 
   changeState(){
     this.taskService.changeState(this.columnId,this.index);

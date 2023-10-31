@@ -20,6 +20,6 @@ export class StatisticContainerComponent {
 
   protected columns$: Observable<StatisticData[]> = this.statisticService.columns$;
 
-  constructor(private statisticService: StatisticService,) {}
+  constructor(private statisticService: StatisticService) {}
 
 }

@@ -3,6 +3,27 @@ import { Logger } from '../interfaces/logger';
 import { environment } from 'src/environments/environment';
 import { MODULE_TOKEN } from 'src/tokens/moduleToken';
 
+interface UserInterface {
+  id: number,
+  name: string,
+  age: number,
+  getMessage(): string
+}
+
+interface ProfileInterface {
+  name: string,
+  profileUrl: string,
+  isActive: boolean
+}
+
+const transform = (user: UserInterface, isActive: boolean = true): ProfileInterface => {
+  return {
+    name: user.name,
+    profileUrl: `/profiles/${user.name}`,
+    isActive
+  }
+}
+
 @Injectable()
 export class LoggerService {
 
@@ -18,3 +39,5 @@ export class LoggerService {
   }
 
 }
+
+
